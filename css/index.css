@@ -1,0 +1,11 @@
+.parent {
+    margin: 10px;
+}
+
+h3, p {
+    text-align: center;
+}
+
+p {
+    margin: 30px auto 10px;
+}
