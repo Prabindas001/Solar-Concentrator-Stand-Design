@@ -24,22 +24,37 @@ function solarTrack(lat) {
   if (latVal > 18 && latVal <= 35) {
     result += "Range: 18-35\n\n";
 
-    A = 2160 * 1.41 * ((Math.sin(radians(40.04 + latVal))) / Math.cos(radians(latVal)));
+    A = 2160 * 1.41 * (
+      (Math.sin(radians(40.04 + latVal))) /
+      (Math.cos(radians(latVal)))
+    );
+
     B = 1350;
-    C = 1.41 * (Math.sqrt(((A * A) / 2) + 960 * 960))
-    D = 1.41 * 2961 * ((Math.sin(radians(27.993 + latVal))) / (Math.cos(radians(48.48 -
-      latVal))));
-    E =
-      1.41 *
-      (4206 * (Math.cos(radians(latVal - 1.3623)))) -
-      (2961 * (Math.sin(radians(27.993 + latVal)))) * (Math.tan(radians(48.48 -
-        latVal)));
+
+    C = 1.41 * (
+      Math.sqrt((Math.pow(A, 2) / 2) + (Math.pow(960, 2)))
+    );
+
+    D = 1.41 * 2961 * (
+      (Math.sin(radians(27.993 + latVal))) /
+      (Math.cos(radians(48.48 - latVal)))
+    );
+
+    E = 1.41 * (
+      4206 * (Math.cos(radians(latVal - 1.3623))) -
+      2961 * (Math.sin(radians(27.993 + latVal))) *
+      (Math.tan(radians(48.48 - latVal)))
+    );
+
     F =
-      1.41 *
-      (3245 * (Math.cos(radians(latVal - 1.7656)))) +
-      (2160 * (Math.sin(radians(40.04 + latVal)))) * Math.tan(radians(latVal));
+      1.41 * (
+        3245 * (Math.cos(radians(latVal - 1.7656))) +
+        2160 * (Math.sin(radians(40.04 + latVal))) *
+        (Math.tan(radians(latVal)))
+      );
+
     G = F - E;
-    H = 2179 * 1.41 * Math.sin(radians(43.14 - latVal));
+    H = 2179 * 1.41 * (Math.sin(radians(43.14 - latVal)));
 
     result += ` A: ${A}\n B: ${B}\n C: ${C}\n D: ${D}\n E: ${E}\n F: ${F}\n G: ${G}\n H: ${H}\n `;
 
